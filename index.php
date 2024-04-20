@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <?php require_once("./src/pages/header/header.html"); ?>
+    <?php require_once("./src/pages/header/header.php"); ?>
     <div class="container">
         <div class="banner">
             <img src="/src//img//banner.png">
@@ -49,6 +49,7 @@
             </div>
         </div>
     </div>
+    <?php require_once("./src/pages/footer/footer.html"); ?>
 
 </body>
 

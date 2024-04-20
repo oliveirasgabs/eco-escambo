@@ -7,7 +7,7 @@
   font-style: normal;
   font-size: 50px;
   color: #426B1F;
-  margin-left: 5px;
+  margin-left: 23px;
 }
 
 a{
@@ -43,13 +43,19 @@ ul li{
   background-color: #777E5C;
   font-family: "Inter", sans-serif;
   font-style: normal;
+  width: 150px;
+  height: 45px;
+}
+
+.menu{
+  text-align: right;
 }
 
 .menu--content{
   display: grid;
   grid-template-columns: 0.8fr 4fr 10fr;
   align-items: center;
-  justify-items: center;
+  /* justify-items: center; */
 }
 
 #company-logo{
