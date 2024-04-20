@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=League+Spartan:wght@100..900&display=swap');
+
+#company-name, #company-name a{
+  font-family: "League Spartan", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-size: 50px;
+  color: #426B1F;
+}
+
+a{
+  font-style: normal;
+  text-decoration: none;
+  color: black;
+}
+
+a:visited{
+  text-decoration: none;
+}
+
+ul li{
+  list-style-type: none;
+  font-family: "Inter", sans-serif;
+}
+
+.menu li{
+  display: inline-block;
+  line-height: 4;
+  margin: 0 50px;
+}
+
+.menu li a{
+  font-weight: 500;
+}
+
+.menu button {
+  border-radius: 10px;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  background-color: #777E5C;
+  font-family: "Inter", sans-serif;
+}
+
+.menu--content{
+  display: grid;
+  grid-template-columns: 0.5fr 3fr 10fr;
+  align-items: center;
+  justify-items: center;
+}
+
+#company-logo{
+  max-width: 120%;
+  border-radius: 50px;
+  margin-left: 20px;
+}
