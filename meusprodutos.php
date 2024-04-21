@@ -4,6 +4,9 @@ session_start();
 // Carregar os produtos do arquivo JSON
 $products = json_decode(file_get_contents('products.json'), true);
 
+// Defina o nome do usuário específico
+$usuario_especifico = "Fernando Haddad";
+
 // Lógica para filtrar os produtos com interessados
 function filterProductsByInterest($products)
 {
@@ -32,28 +35,30 @@ function searchProductsByName($products, $name)
 // Função para exibir os produtos
 function displayProducts($products)
 {
+    global $usuario_especifico;
     foreach ($products as $product) {
+        // Verifica se o produto pertence ao usuário específico
+        if ($product['usuario_dono'] !== $usuario_especifico) {
+            continue; // Pula para o próximo produto se não pertencer ao usuário específico
+        }
         echo '<div class="card">';
         echo '<img src="' . $product['image'] . '" alt="">';
         echo '<h2>' . $product['name'] . '</h2>';
-        echo '<h1>' . $product['usuario_dono'] . '</h1>';
+        // Comente o campo usuario_dono para não exibir
+        // echo '<h1>' . $product['usuario_dono'] . '</h1>';
         echo '<div class="button-group">';
-
         // Botão "Editar" apenas se não houver interessados
         echo '<div class="btn-edit">';
         if (!$product['interested']) {
             echo '<div class="button-b1"><button type="button" onclick="window.location.href=\'editar_produto.php?id=' . $product['id'] . '\'">Editar</button></div>';
         }
-
         // Botão "Excluir"
         echo '<div class="button-b2"><button type="button" onclick="window.location.href=\'excluir_produto.php?id=' . $product['id'] . '\'">Excluir</button></div>';
         echo '</div>';
-
         // Botão "Ver Interessados" apenas se houver interessados
         if ($product['interested']) {
             echo '<div class="button-b3"><button type="button" onclick="window.location.href=\'ver_interessados.php?id=' . $product['id'] . '\'">Ver Interessados</button></div>';
         }
-
         echo '</div>';
         echo '</div>';
     }
@@ -80,7 +85,6 @@ if (isset($_GET['search'])) {
     $products = searchProductsByName($products, $searchTerm);
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 
