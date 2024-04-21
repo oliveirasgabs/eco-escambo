@@ -40,12 +40,14 @@ function displayProducts($products)
         echo '<div class="button-group">';
 
         // Botão "Editar" apenas se não houver interessados
+        echo '<div class="btn-edit">';
         if (!$product['interested']) {
-            echo '<div class="button-b1"><button type="button" onclick="window.location.href=\'editar_produto.php?id=' . $product['id'] . '\'">Editar</button></div>';
+            echo '<div class="button-b1"><button type="button" onclick="window.location.href=#">Editar</button></div>';
         }
 
         // Botão "Excluir"
         echo '<div class="button-b2"><button type="button" onclick="window.location.href=\'excluir_produto.php?id=' . $product['id'] . '\'">Excluir</button></div>';
+        echo '</div>';
 
         // Botão "Ver Interessados" apenas se houver interessados
         if ($product['interested']) {
