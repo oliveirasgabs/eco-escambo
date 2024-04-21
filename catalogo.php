@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo</title>
+    <title>Catalogo - EcoEscambo</title>
     <link rel="stylesheet" href="/src//css//stylecatalogo.css">
     <link rel="shortcut icon" href="/src/img/header/logo-eco-escambo.jpg">
 </head>
