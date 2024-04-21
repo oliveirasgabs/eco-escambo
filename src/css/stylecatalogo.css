@@ -1,0 +1,233 @@
+a {
+  color: unset;
+  text-decoration: none;
+}
+
+.container {
+  width: 1200px;
+  margin: auto;
+  max-width: 90vw;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.title {
+  padding: 20px 0;
+  font-family: 'Spartan';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 130%;
+  color: #426B1F;
+}
+
+.listProduct h1 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+}
+
+
+.listProduct {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.listProduct .item img {
+  width: 90%;
+  border-radius: 20%;
+}
+
+.listProduct .item {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 20px;
+  border-style: double;
+  border-color: #9ab68d;
+}
+
+.listProduct .item h2 {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: #426B1F;
+}
+
+.listProduct .item button {
+  appearance: none;
+  background-color: #9ab68d;
+  border: 2px solid #777e5c;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+
+button:disabled {
+  pointer-events: none;
+}
+
+button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+button:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+/* detail page */
+
+.detail {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px;
+  text-align: left;
+}
+
+.detail .image img {
+  width: 100%;
+  border-radius: 12%;
+}
+
+.detail .image {
+  position: relative;
+}
+
+.detail .image::before {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  content: '';
+  background-color: #94817733;
+  z-index: -1;
+  border-radius: 190px 100px 170px 180px;
+  left: calc(50% - 150px);
+  top: 50px;
+}
+
+.detail .name {
+  padding: 40px 0 0 0;
+  margin: 0 0 10px 0;
+  font-family: 'Spartan';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 55px;
+  line-height: 130%;
+  color: #414B3B;
+}
+
+.detail .buttons {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.detail .buttons button {
+  background-color: #eee;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-family: Poppins;
+  font-size: large;
+}
+
+.detail .description {
+  font-weight: 300;
+}
+
+.page {
+  margin-top: 20px !important;
+}
+
+.page button {
+  background-color: #9ab58c;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.page button:hover {
+  background-color: #9ab58c;
+}
+
+/* Estilos específicos para o botão atual */
+.page button.active {
+  background-color: #007bff;
+}
+
+/* // ipad */
+@media only screen and (max-width: 992px) {
+  .listProduct {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .detail {
+    grid-template-columns: 40% 1fr;
+  }
+}
+
+/* mobile */
+@media only screen and (max-width: 768px) {
+  .listProduct {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detail {
+    text-align: center;
+    grid-template-columns: 1fr;
+  }
+
+  .detail .image img {
+    width: unset;
+    height: 40vh;
+  }
+
+  .detail .name {
+    font-size: x-large;
+    margin: 0;
+  }
+
+  .detail .buttons button {
+    font-size: small;
+  }
+
+  .detail .buttons {
+    justify-content: center;
+  }
+}

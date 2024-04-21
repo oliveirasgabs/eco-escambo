@@ -1,7 +1,7 @@
 <?php
-  $menuOnline = "<nav class='menu'>
+$menuOnline = "<nav class='menu'>
   <ul>
-    <li><a href='#'>Produtos</a></li>
+    <li><a href='./catalogo.php'>Produtos</a></li>
     <li><a href='#'>Meus interesses</a></li>
     <li><a href='#'>Propostas</a></li>
     <li><a href='#'>Mensagens</a></li>
@@ -16,9 +16,9 @@ $menuOffline = "<nav class='menu'>
   </ul>
 </nav>";
 
-if (isset($_SESSION["logado"])==true){
+if (isset($_SESSION["logado"]) == true) {
   $menu = $menuOnline;
-} else{
+} else {
   $menu = $menuOffline;
 }
 
@@ -43,7 +43,7 @@ if (isset($_SESSION["logado"])==true){
       <?php echo $menu
       ?>
     </div>
-  </div> 
+  </div>
 </body>
 
 </html>
