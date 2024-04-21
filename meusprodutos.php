@@ -36,7 +36,7 @@ function displayProducts($products)
         echo '<div class="card">';
         echo '<img src="' . $product['image'] . '" alt="">';
         echo '<h2>' . $product['name'] . '</h2>';
-        echo '<h1>' . $product['dono'] . '</h1>';
+        echo '<h1>' . $product['usuario_dono'] . '</h1>';
         echo '<div class="button-group">';
 
         // Botão "Editar" apenas se não houver interessados

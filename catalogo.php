@@ -17,7 +17,7 @@ session_start();
     <div class="containerMax">
         <div class="container">
             <div class="title">Produtos</div>
-            <div class="dono"></div>
+            <div class="usuario_dono"></div>
             <div class="listProduct">
             </div>
             <div class="page"></div>
@@ -52,7 +52,7 @@ session_start();
                     newProduct.innerHTML =
                         `<img src="${product.image}" alt="">
                         <h2>${product.name}</h2>
-                        <h1>${product.dono}</h1>
+                        <h1>${product.usuario_dono}</h1>
                         <div class="button"><button type="button">Tenho Interesse</button></div>`;
                     listProductHTML.appendChild(newProduct);
                 });
