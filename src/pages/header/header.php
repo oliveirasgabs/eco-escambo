@@ -11,12 +11,10 @@
 
 $menuOffline = "<nav class='menu'>
   <ul>
-    <li><a href='#'>Crie sua conta</a></li>
+    <li><a href='/cadastro.php'>Crie sua conta</a></li>
     <li><a href='/login.php'><button>Entrar</button></a></li>
   </ul>
 </nav>";
-
-session_start();
 
 if (isset($_SESSION["logado"])==true){
   $menu = $menuOnline;
@@ -40,8 +38,8 @@ if (isset($_SESSION["logado"])==true){
 <body>
   <div id="header">
     <div class="menu--content">
-      <div><a href="#"><img src="/src/img/header/logo-eco-escambo.jpg" alt="eco-escambo" id="company-logo"></a></div>
-      <div id="company-name"><a href="#">Eco Escambo</a></div>
+      <div><a href="index.php"><img src="/src/img/header/logo-eco-escambo.jpg" alt="eco-escambo" id="company-logo"></a></div>
+      <div id="company-name"><a href="index.php">Eco Escambo</a></div>
       <?php echo $menu
       ?>
     </div>
