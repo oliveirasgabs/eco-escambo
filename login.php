@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+$errormessenger = "<p class='error-messenger'>Senha e/ou usuário incorreto(s).</p>";
 ?>
 
 <!DOCTYPE html>
@@ -17,24 +19,25 @@ session_start();
   <?php require_once("./src/pages/header/header.php"); ?>
 
   <div class="container--login-info">
+    <h1>Acesse a sua conta:</h1>
     <div class="container--form">
       <?php
       if (isset($_GET["erro"])) {
-        echo "<p>Senha e/ou usuário incorreto(s).</p>";
+        echo $errormessenger;
       }
       ?>
       <form method="post" action="valida-user.php">
-        <label for="usuario">Usuário</label>
+        <label for="usuario">Email</label>
         <br>
-        <input type="text" id="usuario" name="username" placeholder="Digite seu usuário">
+        <input type="text" id="usuario" name="username" placeholder="Digite seu email cadastrado">
         <br>
         <label for="senha">Senha</label>
         <br>
         <input type="password" id="senha" name="password" placeholder="Digite sua senha">
         <br>
-        <input type="submit" value="Entrar">
+        <span class="submmit-bottom"><input type="submit" value="Acessar"></span>
       </form>
-      <div><a href="esqueci-minha-senha.php">Esqueci a minha senha</a> | <a href="">Esqueci o meu usuário</a></div>
+      <div><a href="esqueci-minha-senha.php">Esqueceu a sua senha?</a> | <a href="cadastro.php">Ainda não é usuário?</a></div>
     </div>
   </div>
 

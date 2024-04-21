@@ -2,7 +2,12 @@
 
 session_start();
 
+$user_email = $_POST["user-email"];
+$user_name = $_POST["name-complete"];
+
 $codigo_verificacao = mt_rand(100000, 999999); // Gera um número aleatório de 6 dígitos
+
+$errormessenger = "<p class='error-messenger'>Código de verificação não coincide.</p>";
 
 /*   $email_destino = $_POST["user-email"];
   $assunto = 'Código de Verificação';
@@ -21,26 +26,32 @@ $_SESSION['codigo_verificacao'] = $codigo_verificacao;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Validar Conta - EcoEscambo</title>
-  <link rel="stylesheet" href="/src/css/stylecadastro.css">
+  <link rel="stylesheet" href="/src/css/stylevalidaemail.css">
 </head>
 
 <body>
   <?php require_once("./src/pages/header/header.php"); ?>
 
   <div class="container--sign-up">
-    Verifique a sua conta:
+    <div class="container--client-info">
+      <p>Olá, <?php echo $user_name ;?>!</p>
+      <p>Enviamos um email com um código de verificação para <?php echo $user_email; ?></p>
+      <p>Digite o código recebido no campo abaixo para verificar a sua conta:</p>
+    </div>
+    <div class="error-messenger"><?php
+      if (isset($_GET["erro"])) {
+        echo $errormessenger;
+      }
+      ?>
+    </div>
     <form method="post" action="valida-email.php">
-
-      <label for="senha">Código de verificação:</label>
-      <input type="numbers" id="verification-code" name="verification-code">
-      <input type="submit" value="Entrar">
+      <div class="container-verification-code">
+        <div><label for="senha">Código de verificação:</label></div>
+        <div><input type="numbers" id="verification-code" name="verification-code"></div>
+        <div><button class="submit-buttom" type="submit" value="Entrar">Validar</button></div>
+      </div>
     </form>
   </div>
-  <?php
-  if (isset($_GET["erro"])) {
-    echo "<p>Código de verificação incorreto</p>";
-  }
-  ?>
   <br>
   <br>
   <?php

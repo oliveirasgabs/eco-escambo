@@ -1,13 +1,12 @@
-.container--login-info {
-  width: 100%;
-  text-align: center;
+.container--sign-up{
   border-top: 2px solid #414B3B;
+  padding: 20px;
+  text-align: center;
 }
 
-.container--form {
+.container--info-sign-up{
   /* border: 1px solid black; */
-  margin: 10px 90px;
-  padding: 50px;
+  text-align: center;
 }
 
 h1{
@@ -28,26 +27,16 @@ form input {
   margin-bottom: 20px;
   font-family: "Inter", sans-serif;
   text-align: center;
-}
-
-.container--form a{
-  font-family: "Inter", sans-serif;
-}
-
-.container--form input{
-  border-radius: 5px;
-  border: 1px solid #414B3B;
   padding: 5px 10px;
 }
 
-.error-messenger{
-  font-size: 25px;
-  font-weight: bold;
-  color: red;
-  margin-bottom: 20px;
+.container--info-sign-up input{
+  border-radius: 5px;
+  border: 1px solid #414B3B;
+  padding: 5px 50px;
 }
 
-.submmit-bottom input{
+.submmit-buttom button{
   border-radius: 10px;
   color: white;
   padding: 15px 20px;
@@ -57,4 +46,18 @@ form input {
   font-style: normal;
   width: 150px;
   height: 45px;
+  margin: auto;
+}
+
+#btnCadastrar{
+  border-radius: 10px;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  background-color: #777E5C;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  width: 250px;
+  height: 45px;
+  margin: auto;
 }
