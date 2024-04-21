@@ -1,86 +1,98 @@
 [
-{
-    "id": 1,
-    "name":" Produto",
-    "dono":"Dono: Alexandre de Morais",
-    "image": "/src/img/produtos/1.webp",
-    "description": "Descriçao do Produto."
-},
-{
-    "id": 2,
-    "name":" Produto",
-    "dono":"Dono: Alexandre de Morais",
-    "image": "/src/img/produtos/2.png",
-    "description": "Descriçao do Produto."
-},
-{
-    "id": 3,
-    "name":" Produto",
-    "dono":"Dono: Alexandre de Morais",
-    "image": "/src/img/produtos/2.png",
-    "description": "Descriçao do Produto."
-},
-{
-    "id": 4,
-    "name":" Produto",
-    "dono":"Dono: Alexandre de Morais",
-    "image": "/src/img/produtos/4.webp",
-    "description": "Descriçao do Produto."
-},
-{
-    "id": 5,
-    "name":" Produto",
-    "dono":"Dono: Alexandre de Morais",
-    "image": "/src/img/produtos/1.webp",
-    "description": "Descriçao do Produto."
-},
-{
-    "id": 6,
-    "name":" Produto",
-    "dono":"Dono: Alexandre de Morais",
-    "image": "/src/img/produtos/2.png",
-    "description": "Descriçao do Produto."
-},
-{
-    "id": 7,
-    "name":" Produto",
-    "dono":"Dono: Alexandre de Morais",
-    "image": "/src/img/produtos/4.webp",
-    "description": "Descriçao do Produto."
-},
-{
-    "id": 8,
-    "name":" Produto",
-    "dono":"Dono: Alexandre de Morais",
-    "image": "/src/img/produtos/4.webp",
-    "description": "Descriçao do Produto."
-},
-{
-    "id": 9,
-    "name":" Produto",
-    "dono":"Dono: Alexandre de Morais",
-    "image": "/src/img/produtos/4.webp",
-    "description": "Descriçao do Produto."
-},
-{
-    "id": 10,
-    "name":" Produto",
-    "dono":"Dono: Alexandre de Morais",
-    "image": "/src/img/produtos/1.webp",
-    "description": "Descriçao do Produto."
-},
-{
-    "id": 11,
-    "name":" Produto",
-    "dono":"Dono: Alexandre de Morais",
-    "image": "/src/img/produtos/2.png",
-    "description": "Descriçao do Produto."
-},
-{
-    "id": 12,
-    "name":" Produto",
-    "dono":"Dono: Alexandre de Morais",
-    "image": "/src/img/produtos/3.avif",
-    "description": "Descriçao do Produto."
-}
+    {
+        "id": 1,
+        "name": " Produto",
+        "dono": "Dono: Alexandre de Morais",
+        "image": "/src/img/produtos/1.webp",
+        "description": "Descrição do Produto",
+        "interested": false
+    },
+    {
+        "id": 2,
+        "name": " Produto1",
+        "dono": "Dono: Lulinha",
+        "image": "/src/img/produtos/2.png",
+        "description": "Descrição do Produto.",
+        "interested": true
+    },
+    {
+        "id": 3,
+        "name": " Produto",
+        "dono": "Dono: Alexandre de Morais",
+        "image": "/src/img/produtos/2.png",
+        "description": "Descrição do Produto.",
+        "interested": false
+    },
+    {
+        "id": 4,
+        "name": " Produto",
+        "dono": "Dono: Alexandre de Morais",
+        "image": "/src/img/produtos/4.webp",
+        "description": "Descrição do Produto.",
+        "interested": true
+    },
+    {
+        "id": 5,
+        "name": " Produto",
+        "dono": "Dono: Alexandre de Morais",
+        "image": "/src/img/produtos/1.webp",
+        "description": "Descrição do Produto.",
+        "interested": false
+    },
+    {
+        "id": 6,
+        "name": " Produto",
+        "dono": "Dono: Alexandre de Morais",
+        "image": "/src/img/produtos/2.png",
+        "description": "Descrição do Produto.",
+        "interested": false
+    },
+    {
+        "id": 7,
+        "name": " Produto",
+        "dono": "Dono: Alexandre de Morais",
+        "image": "/src/img/produtos/4.webp",
+        "description": "Descrição do Produto.",
+        "interested": false
+    },
+    {
+        "id": 8,
+        "name": " Produto",
+        "dono": "Dono: Alexandre de Morais",
+        "image": "/src/img/produtos/4.webp",
+        "description": "Descrição do Produto.",
+        "interested": false
+    },
+    {
+        "id": 9,
+        "name": " Produto",
+        "dono": "Dono: Alexandre de Morais",
+        "image": "/src/img/produtos/4.webp",
+        "description": "Descrição do Produto.",
+        "interested": false
+    },
+    {
+        "id": 10,
+        "name": " Produto",
+        "dono": "Dono: Alexandre de Morais",
+        "image": "/src/img/produtos/1.webp",
+        "description": "Descrição do Produto.",
+        "interested": false
+    },
+    {
+        "id": 11,
+        "name": " Produto",
+        "dono": "Dono: Alexandre de Morais",
+        "image": "/src/img/produtos/2.png",
+        "description": "Descrição do Produto.",
+        "interested": false
+    },
+    {
+        "id": 12,
+        "name": " Produto",
+        "dono": "Dono: Alexandre de Morais",
+        "image": "/src/img/produtos/3.avif",
+        "description": "Descrição do Produto.",
+        "interested": false
+    }
 ]
