@@ -42,7 +42,7 @@ function displayProducts($products)
         // Botão "Editar" apenas se não houver interessados
         echo '<div class="btn-edit">';
         if (!$product['interested']) {
-            echo '<div class="button-b1"><button type="button" onclick="window.location.href=#">Editar</button></div>';
+            echo '<div class="button-b1"><button type="button" onclick="window.location.href=\'editar_produto.php?id=' . $product['id'] . '\'">Editar</button></div>';
         }
 
         // Botão "Excluir"
