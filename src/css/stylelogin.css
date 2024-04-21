@@ -1,5 +1,26 @@
 .container--login-info{
   width: 100%;
   text-align: center;
+  border: 1px solid black;
+}
+
+.container--form{
+  border: 1px solid black;
+  margin: 200px;
+  padding: 50px;
+}
+
+form label{
+  list-style-type: none;
+  font-family: "League Spartan", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #414B3B;
+}
+
+form input{
+  margin-bottom: 20px;
+  font-family: "Inter", sans-serif;
+  text-align: center;
 }
 
