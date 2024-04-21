@@ -29,6 +29,35 @@ function searchProductsByName($products, $name)
     return $results;
 }
 
+// Função para exibir os produtos
+function displayProducts($products)
+{
+    foreach ($products as $product) {
+        echo '<div class="card">';
+        echo '<img src="' . $product['image'] . '" alt="">';
+        echo '<h2>' . $product['name'] . '</h2>';
+        echo '<h1>' . $product['dono'] . '</h1>';
+        echo '<div class="button-group">';
+
+        // Botão "Editar" apenas se não houver interessados
+        if (!$product['interested']) {
+            echo '<div class="button-b1"><button type="button" onclick="window.location.href=\'editar_produto.php?id=' . $product['id'] . '\'">Editar</button></div>';
+        }
+
+        // Botão "Excluir"
+        echo '<div class="button-b2"><button type="button" onclick="window.location.href=\'excluir_produto.php?id=' . $product['id'] . '\'">Excluir</button></div>';
+
+        // Botão "Ver Interessados" apenas se houver interessados
+        if ($product['interested']) {
+            echo '<div class="button-b3"><button type="button" onclick="window.location.href=\'ver_interessados.php?id=' . $product['id'] . '\'">Ver Interessados</button></div>';
+        }
+
+        echo '</div>';
+        echo '</div>';
+    }
+}
+
+
 // Aplicar os filtros, se aplicáveis
 if (isset($_GET['filter'])) {
     $filter = $_GET['filter'];
@@ -48,22 +77,6 @@ if (isset($_GET['search'])) {
     $searchTerm = $_GET['search'];
     $products = searchProductsByName($products, $searchTerm);
 }
-
-// Função para exibir os produtos
-function displayProducts($products)
-{
-    foreach ($products as $product) {
-        echo '<div class="card">';
-        echo '<a href="#">';
-        echo '<img src="' . $product['image'] . '" alt="">';
-        echo '<h2>' . $product['name'] . '</h2>';
-        echo '<h1>' . $product['dono'] . '</h1>';
-        echo '<div class="button"><button type="button">Tenho Interesse</button></div>';
-        echo '</a>';
-        echo '</div>';
-    }
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -83,10 +96,10 @@ function displayProducts($products)
         <div class="filtro">
             <div class="radio-group">
                 <label class="radio-button">
-                    <input type='radio' name='filter' value='all' <?php echo $filter === 'all' ? 'checked' : ''; ?> /> Todos <span></span>
+                    <input type='radio' name='filter' value='all' <?php echo $filter === 'all' ? 'checked' : ''; ?> /> Todos | <span></span>
                 </label>
                 <label class="radio-button">
-                    <input type='radio' name='filter' value='interested' <?php echo $filter === 'interested' ? 'checked' : ''; ?> /> Somente os que há interessados <span></span>
+                    <input type='radio' name='filter' value='interested' <?php echo $filter === 'interested' ? 'checked' : ''; ?> /> Somente os que há interessados | <span></span>
                 </label>
             </div>
             <form action="" method="GET">
