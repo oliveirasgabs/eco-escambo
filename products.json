@@ -74,7 +74,7 @@
     {
         "id": 10,
         "name": "Máquina de Café Nespresso Essenza Mini",
-        "usuario_dono": "Rui Costa",
+        "usuario_dono": "Fernando Haddad",
         "image": "/src/img/produtos/cafeteira.jpg",
         "description": "Máquina de Café Nespresso Essenza Mini, cor Preto, sistema de cápsulas Nespresso, reservatório de água removível de 0.6L, 19 bar de pressão.",
         "interested": false
