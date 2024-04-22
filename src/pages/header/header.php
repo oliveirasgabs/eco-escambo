@@ -3,9 +3,9 @@ $menuOnline = "<nav class='menu'>
   <ul>
     <li><a href='./catalogo.php'>Catálogo</a></li>
     <li><a href='#'>Meus interesses</a></li>
-    <li><a href='./meusprodutos.php'>Meu produtos</a></li>
+    <li><a href='./meusprodutos.php'>Meus produtos</a></li>
     <li><a href='#'>Mensagens</a></li>
-    <li><a href='#'><button>Minha Conta</button></a></li>
+    <li><a href='./cadastrar-produto.php'><button>Cadastrar produto</button></a></li>
   </ul>
 </nav>";
 

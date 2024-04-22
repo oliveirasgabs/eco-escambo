@@ -1,0 +1,49 @@
+.container--content-forgot-password h1 {
+  font-family: "League Spartan", sans-serif;
+  font-size: 40px;
+  color: #414B3B;
+}
+
+.container--content-forgot-password p{
+  font-size: 24px;
+}
+
+.container--content-forgot-password{
+  border: 1px solid black;
+  text-align: center;
+}
+
+.botao-recuperar{
+  border-radius: 10px;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  background-color: #777E5C;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  width: 250px;
+  height: 45px;
+  margin-bottom: 50px;
+}
+
+form label {
+  list-style-type: none;
+  font-family: "League Spartan", sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #414B3B;
+}
+
+form input {
+  border-radius: 5px;
+  border: 1px solid #414B3B;
+  margin-bottom: 20px;
+  font-family: "Inter", sans-serif;
+  text-align: center;
+  padding: 5px 10px;
+  width: 300px;
+}
+
+.space{
+  margin-top: 20px;
+}
