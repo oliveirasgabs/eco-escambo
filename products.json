@@ -3,7 +3,7 @@
         "id": 1,
         "name": "Notebook Dell Inspiron 15",
         "usuario_dono": "Jair Bolsonaro",
-        "image": "/src/img/produtos/1.webp",
+        "image": "/src/img/produtos/laptop.avif",
         "description": "Notebook Dell Inspiron 15, processador Intel Core i5, 8GB de RAM, 256GB de armazenamento SSD, tela de 15.6 polegadas Full HD.",
         "interested": false
     },
@@ -11,7 +11,7 @@
         "id": 2,
         "name": "iPhone 12 Pro Max",
         "usuario_dono": "Fernando Haddad",
-        "image": "/src/img/produtos/2.png",
+        "image": "/src/img/produtos/Iphone.jpg",
         "description": "iPhone 12 Pro Max, cor Graphite, 256GB de armazenamento, tela Super Retina XDR de 6.7 polegadas, câmera tripla com sensor LiDAR.",
         "interested": true
     },
@@ -19,7 +19,7 @@
         "id": 3,
         "name": "Smart TV Samsung 55\" 4K",
         "usuario_dono": "Ciro Gomes",
-        "image": "/src/img/produtos/2.png",
+        "image": "/src/img/produtos/samsung55.jpg",
         "description": "Smart TV Samsung 55 polegadas 4K, modelo TU8000, tecnologia Crystal UHD, sistema operacional Tizen, HDR10+.",
         "interested": false
     },
@@ -27,7 +27,7 @@
         "id": 4,
         "name": "PlayStation 5",
         "usuario_dono": "Marina Silva",    
-        "image": "/src/img/produtos/4.webp",
+        "image": "/src/img/produtos/ps5.avif",
         "description": "PlayStation 5, edição padrão com leitor de discos Blu-ray Ultra HD, SSD de 825GB, suporte a 4K e 8K, retrocompatibilidade com PS4.",
         "interested": true
     },
@@ -35,7 +35,7 @@
         "id": 5,
         "name": "Câmera DSLR Canon EOS Rebel T7i",
         "usuario_dono": "João Doria",
-        "image": "/src/img/produtos/1.webp",
+        "image": "/src/img/produtos/canon.jpg",
         "description": "Câmera DSLR Canon EOS Rebel T7i, sensor CMOS de 24.2MP, processador DIGIC 7, gravação de vídeo Full HD, tela articulada touchscreen.",
         "interested": false
     },
@@ -43,7 +43,7 @@
         "id": 6,
         "name": "MacBook Air M1",
         "usuario_dono": "Luciano Huck",
-        "image": "/src/img/produtos/2.png",
+        "image": "/src/img/produtos/macbook.jpg",
         "description": "MacBook Air M1, chip Apple M1 com CPU de 8 núcleos e GPU de 7 núcleos, 8GB de RAM, SSD de 256GB, tela Retina de 13 polegadas.",
         "interested": false
     },
@@ -51,7 +51,7 @@
         "id": 7,
         "name": "Apple Watch Series 6",
         "usuario_dono": "João Amoêdo",
-        "image": "/src/img/produtos/4.webp",
+        "image": "/src/img/produtos/applewatch.jpg",
         "description": "Apple Watch Series 6, caixa de alumínio prateada, GPS + Cellular, tela Retina Always-On, resistência à água 50 metros, monitor de oxigênio no sangue.",
         "interested": false
     },
@@ -59,7 +59,7 @@
         "id": 8,
         "name": "Samsung Galaxy S21 Ultra",
         "usuario_dono": "Guilherme Boulos",
-        "image": "/src/img/produtos/4.webp",
+        "image": "/src/img/produtos/s21ultra.jpg",
         "description": "Samsung Galaxy S21 Ultra, cor Phantom Black, 256GB de armazenamento, tela Dynamic AMOLED 2X de 6.8 polegadas, câmera quádrupla de 108MP.",
         "interested": false
     },
@@ -67,7 +67,7 @@
         "id": 9,
         "name": "Xbox Series X",
         "usuario_dono": "Flávio Dino",
-        "image": "/src/img/produtos/4.webp",
+        "image": "/src/img/produtos/xboxX.webp",
         "description": "Xbox Series X, edição padrão com leitor de discos Blu-ray 4K Ultra HD, SSD de 1TB, suporte a 4K e 8K, retrocompatibilidade com Xbox One.",
         "interested": false
     },
@@ -75,7 +75,7 @@
         "id": 10,
         "name": "Máquina de Café Nespresso Essenza Mini",
         "usuario_dono": "Rui Costa",
-        "image": "/src/img/produtos/1.webp",
+        "image": "/src/img/produtos/cafeteira.jpg",
         "description": "Máquina de Café Nespresso Essenza Mini, cor Preto, sistema de cápsulas Nespresso, reservatório de água removível de 0.6L, 19 bar de pressão.",
         "interested": false
     },
@@ -83,7 +83,7 @@
         "id": 11,
         "name": "GoPro HERO9 Black",
         "usuario_dono": "Henrique Meirelles",
-        "image": "/src/img/produtos/2.png",
+        "image": "/src/img/produtos/gopro.jpg",
         "description": "GoPro HERO9 Black, câmera de ação 5K, tela frontal colorida, estabilização HyperSmooth 3.0, à prova d'água até 10 metros sem caixa.",
         "interested": false
     },
@@ -91,7 +91,7 @@
         "id": 12,
         "name": "Samsung Galaxy Tab S7",
         "usuario_dono": "Sergio Moro",
-        "image": "/src/img/produtos/3.avif",
+        "image": "/src/img/produtos/samsungtab.jpg",
         "description": "Samsung Galaxy Tab S7, tablet Android com tela de 11 polegadas, S Pen incluída, processador Snapdragon 865+, 6GB de RAM, 128GB de armazenamento.",
         "interested": false
     }
