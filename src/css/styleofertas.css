@@ -90,6 +90,32 @@
     /* Verde mais escuro */
 }
 
+.btn-excluir {
+    background-color: #4CAF50; /* Verde */
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.btn-propor:hover {
+    background-color: #45a049; /* Verde mais escuro */
+}
+
+.btn-excluir {
+    background-color: #FF5733; /* Vermelho */
+}
+
+.btn-excluir:hover {
+    background-color: #FF6347; /* Vermelho mais escuro */
+}
+
 /*Stilo dropdown
 .dropdown {
     position: relative;

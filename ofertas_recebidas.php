@@ -31,7 +31,10 @@ function displayInteressados($products, $productId)
                 echo '<h3>Produtos para Troca:</h3>';
                 foreach ($interessado['produtos'] as $produtoId) {
                     displayProduct($products, $produtoId);
-                    echo '<button class="btn-propor">Propor</button>';
+                    echo '<div class="buttons">';
+                    echo '<button class="btn-propor">Aceitar</button>';
+                    echo '<button class="btn-excluir">Rejeitar</button>';
+                    echo '</div>';
                 }
                 echo '</div>';
             }
