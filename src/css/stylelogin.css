@@ -10,7 +10,7 @@
   padding: 50px;
 }
 
-h1{
+h1 {
   font-family: "League Spartan", sans-serif;
   font-size: 40px;
   color: #414B3B;
@@ -30,24 +30,24 @@ form input {
   text-align: center;
 }
 
-.container--form a{
+.container--form a {
   font-family: "Inter", sans-serif;
 }
 
-.container--form input{
+.container--form input {
   border-radius: 5px;
   border: 1px solid #414B3B;
   padding: 5px 10px;
 }
 
-.error-messenger{
+.error-messenger {
   font-size: 25px;
   font-weight: bold;
   color: red;
   margin-bottom: 20px;
 }
 
-.submmit-bottom input{
+.submmit-bottom input {
   border-radius: 10px;
   color: white;
   padding: 15px 20px;

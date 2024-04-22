@@ -1,0 +1,133 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.container-ofertas {
+    display: flex;
+}
+
+.listProduct {
+    text-align: center;
+}
+
+.titleproduto h2 {
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 130%;
+    color: #426B1F;
+    margin: 0 37px;
+    text-align: center;
+}
+
+.card {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    margin: 20px 30px;
+    display: inline-grid;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.card h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #426B1F;
+}
+
+.card h1 {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.title-ofertas h2 {
+    font-family: 'Spartan';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 130%;
+    color: #426B1F;
+    margin: 0;
+    text-align: center;
+}
+
+.btn-propor {
+    background-color: #4CAF50;
+    /* Verde */
+    border: none;
+    color: white;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+
+}
+
+.btn-propor:hover {
+    background-color: #45a049;
+    /* Verde mais escuro */
+}
+
+/*Stilo dropdown
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 24px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content .card {
+    padding: 10px;
+}
+
+.dropdown-content .card:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #45a049;
+}
+ */

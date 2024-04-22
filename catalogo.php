@@ -26,12 +26,12 @@ session_start();
         <script>
             let products = null;
             let currentPage = 1;
-            let itemsPerPage = 8; // Defina o número de itens por página
+            let itemsPerPage = 8;
 
             fetch('products.json')
                 .then(response => response.json())
-                .then(data => {
-                    products = data;
+                .then(data => {// Filtra os produtos para excluir os do usuário específico
+                    products = data.filter(product => product.usuario_dono !== 'Fernando Haddad');
                     addDataToHTML();
                 });
 

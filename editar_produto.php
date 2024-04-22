@@ -31,7 +31,6 @@ if (isset($_GET['id'])) {
                 <input type="text" id="name" name="name" value="<?php echo $product['name']; ?>"><br><br>
                 <label for="usuario_dono">usuario_dono:</label>
                 <input type="text" id="usuario_dono" name="usuario_dono" value="<?php echo $product['usuario_dono']; ?>"><br><br>
-                <!-- Adicione os outros campos que deseja editar -->
                 <button type="submit">Salvar</button>
             </form>
         </body>

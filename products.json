@@ -5,7 +5,8 @@
         "usuario_dono": "Jair Bolsonaro",
         "image": "/src/img/produtos/laptop.avif",
         "description": "Notebook Dell Inspiron 15, processador Intel Core i5, 8GB de RAM, 256GB de armazenamento SSD, tela de 15.6 polegadas Full HD.",
-        "interested": false
+        "interested": false,
+        "interessados": []
     },
     {
         "id": 2,
@@ -13,12 +14,22 @@
         "usuario_dono": "Fernando Haddad",
         "image": "/src/img/produtos/Iphone.jpg",
         "description": "iPhone 12 Pro Max, cor Graphite, 256GB de armazenamento, tela Super Retina XDR de 6.7 polegadas, câmera tripla com sensor LiDAR.",
-        "interested": true
+        "interested": true,
+        "interessados": [
+            {
+                "nome": "Jair Bolsonaro",
+                "produtos": [1, 3]
+            },
+            {
+                "nome": "Marina Silva",
+                "produtos": [4]
+            }
+        ]
     },
     {
         "id": 3,
         "name": "Smart TV Samsung 55\" 4K",
-        "usuario_dono": "Ciro Gomes",
+        "usuario_dono": "Jair Bolsonaro",
         "image": "/src/img/produtos/samsung55.jpg",
         "description": "Smart TV Samsung 55 polegadas 4K, modelo TU8000, tecnologia Crystal UHD, sistema operacional Tizen, HDR10+.",
         "interested": false

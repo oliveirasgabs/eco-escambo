@@ -1,11 +1,9 @@
 <?php
-// Verifica se os dados do formulário foram enviados via POST
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Obtém os dados do formulário
     $productId = $_POST['id'];
     $productName = $_POST['name'];
     $productOwner = $_POST['usuario_dono'];
-    // Adicione aqui os outros campos que deseja editar
 
     // Carrega os produtos do arquivo JSON
     $products = json_decode(file_get_contents('products.json'), true);
@@ -17,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($index !== false) {
         $products[$index]['name'] = $productName;
         $products[$index]['usuario_dono'] = $productOwner;
-        // Adicione aqui as atualizações para outros campos, se necessário
 
         // Salva os produtos atualizados de volta no arquivo JSON
         file_put_contents('products.json', json_encode($products));

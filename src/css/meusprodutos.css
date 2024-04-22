@@ -99,7 +99,7 @@
     }
 
     .filtro button {
-        background-color: #4CAF50;
+        background-color: #9ab689;
         color: white;
         border: none;
         cursor: pointer;
@@ -125,7 +125,8 @@
     }
 
     .card img {
-        width: 100%;
+        width: 230px;
+        height: 310px;
         border-radius: 8px;
         margin-bottom: 10px;
     }

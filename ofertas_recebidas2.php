@@ -24,19 +24,21 @@ function displayInteressados($products, $productId)
     foreach ($products as $product) {
         if ($product['id'] == $productId && $product['interested']) {
             echo '<div class="title-ofertas"><h2>Interessados</h2></div>';
-            echo '<div class="container-ofertas">';
             foreach ($product['interessados'] as $interessado) {
-                echo '<div class="card">';
+                echo '<div class="interessado">';
                 echo '<h2>Nome do Interessado: ' . $interessado['nome'] . '</h2>';
                 echo '<h3>Produtos para Troca:</h3>';
+                echo '<div class="dropdown">';
+                echo '<button class="dropbtn">Selecione um Produto</button>';
+                echo '<div class="dropdown-content">';
                 foreach ($interessado['produtos'] as $produtoId) {
                     displayProduct($products, $produtoId);
-                    echo '<button class="btn-propor">Propor</button>';
                 }
+                echo '</div>';
+                echo '</div>';
                 echo '</div>';
             }
             break;
-            echo '</div>';
         }
     }
 }

@@ -1,19 +1,21 @@
-.container-sign-up-product{
+.container-sign-up-product {
   width: 100%;
   text-align: center;
   font-family: "Inter", sans-serif;
 }
 
-.container-product-info label, .container-product-info input{
+.container-product-info label,
+.container-product-info input {
   display: block;
   margin: auto;
 }
 
-.container-product-info label{
+.container-product-info label {
   padding-top: 20px;
 }
 
-.container-product-info input, .container-product-info textarea{
+.container-product-info input,
+.container-product-info textarea {
   border-radius: 5px;
   border: 1px solid #414B3B;
   margin-bottom: 20px;
@@ -23,13 +25,13 @@
   width: 300px;
 }
 
-.sign-up-title{
+.sign-up-title {
   font-family: "League Spartan", sans-serif;
   font-size: 30px;
-  color: #414B3B; 
+  color: #414B3B;
 }
 
-.cadastrar-produto{
+.cadastrar-produto {
   border-radius: 10px;
   color: white;
   padding: 15px 20px;

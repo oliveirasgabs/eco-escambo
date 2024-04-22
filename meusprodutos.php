@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Carregar os produtos do arquivo JSON
 $products = json_decode(file_get_contents('products.json'), true);
 
 // Defina o nome do usuário específico
@@ -21,10 +20,9 @@ function searchProductsByName($products, $name)
 {
     $results = array();
     foreach ($products as $product) {
-        // Converte ambos os nomes para minúsculas para comparar de forma case-insensitive
         $productName = strtolower($product['name']);
         $searchTerm = strtolower($name);
-        // Verifica se o nome do produto contém o termo de pesquisa, em caso de falha na pesquisa exibi todos os produtos
+        // Verifica se o nome do produto contém o termo de pesquisa, em caso de falha na pesquisa exibir todos os produtos
         if (strpos($productName, $searchTerm) !== false) {
             $results[] = $product;
         }
@@ -39,13 +37,11 @@ function displayProducts($products)
     foreach ($products as $product) {
         // Verifica se o produto pertence ao usuário específico
         if ($product['usuario_dono'] !== $usuario_especifico) {
-            continue; // Pula para o próximo produto se não pertencer ao usuário específico
+            continue;
         }
         echo '<div class="card">';
         echo '<img src="' . $product['image'] . '" alt="">';
         echo '<h2>' . $product['name'] . '</h2>';
-        // Comente o campo usuario_dono para não exibir
-        // echo '<h1>' . $product['usuario_dono'] . '</h1>';
         echo '<div class="button-group">';
         // Botão "Editar" apenas se não houver interessados
         echo '<div class="btn-edit">';
@@ -57,7 +53,7 @@ function displayProducts($products)
         echo '</div>';
         // Botão "Ver Interessados" apenas se houver interessados
         if ($product['interested']) {
-            echo '<div class="button-b3"><button type="button" onclick="window.location.href=\'ver_interessados.php?id=' . $product['id'] . '\'">Ver Interessados</button></div>';
+            echo '<div class="button-b3"><button type="button" onclick="window.location.href=\'ofertas_recebidas.php?id=' . $product['id'] . '&user=' . urlencode($usuario_especifico) . '\'">Ver Interessados</button></div>';
         }
         echo '</div>';
         echo '</div>';
@@ -65,21 +61,20 @@ function displayProducts($products)
 }
 
 
-// Aplicar os filtros, se aplicáveis
+// Filtros, se possiveis
 if (isset($_GET['filter'])) {
     $filter = $_GET['filter'];
     switch ($filter) {
         case 'interested':
             $products = filterProductsByInterest($products);
             break;
-            // Adicione outros casos para outros filtros, se necessário
     }
 } else {
     // Se nenhum filtro for selecionado, exibir todos os produtos
     $filter = 'all';
 }
 
-// Aplicar pesquisa por nome, se houver
+// Aplicar pesquisa por nome
 if (isset($_GET['search'])) {
     $searchTerm = $_GET['search'];
     $products = searchProductsByName($products, $searchTerm);
@@ -120,10 +115,7 @@ if (isset($_GET['search'])) {
     <?php require_once("./src/pages/footer/footer.html"); ?>
 
     <script>
-        // Captura os radio buttons
         const radioButtons = document.querySelectorAll('input[name="filter"]');
-
-        // Adiciona um evento de mudança para cada radio button
         radioButtons.forEach(radioButton => {
             radioButton.addEventListener('change', function() {
                 // Obtém o valor do filtro selecionado

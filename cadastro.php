@@ -46,17 +46,17 @@ session_start();
 </body>
 
 <script>
-    function verificarSenhas() {
-        var senha = document.getElementById("senha").value;
-        var confirmarSenha = document.getElementById("confirmar_senha").value;
+  function verificarSenhas() {
+    var senha = document.getElementById("senha").value;
+    var confirmarSenha = document.getElementById("confirmar_senha").value;
 
-        if (senha === confirmarSenha) {
-            btnCadastrar.style.display = "block";
-        } else {
-            btnCadastrar.style.display = "none";
-            alert("Erro: As senhas não coincidem.");
-        }
+    if (senha === confirmarSenha) {
+      btnCadastrar.style.display = "block";
+    } else {
+      btnCadastrar.style.display = "none";
+      alert("Erro: As senhas não coincidem.");
     }
+  }
 </script>
 
 </html>

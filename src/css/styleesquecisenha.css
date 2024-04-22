@@ -4,16 +4,16 @@
   color: #414B3B;
 }
 
-.container--content-forgot-password p{
+.container--content-forgot-password p {
   font-size: 24px;
 }
 
-.container--content-forgot-password{
+.container--content-forgot-password {
   border: 1px solid black;
   text-align: center;
 }
 
-.botao-recuperar{
+.botao-recuperar {
   border-radius: 10px;
   color: white;
   padding: 15px 20px;
@@ -44,6 +44,6 @@ form input {
   width: 300px;
 }
 
-.space{
+.space {
   margin-top: 20px;
 }

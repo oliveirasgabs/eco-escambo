@@ -1,4 +1,4 @@
-.submit-buttom{
+.submit-buttom {
   border-radius: 10px;
   color: white;
   padding: 15px 20px;
@@ -11,24 +11,24 @@
   margin: 30px 10px;
 }
 
-.container--sign-up{
+.container--sign-up {
   text-align: center;
   border-top: 2px solid #414B3B;
   padding: 30px 50px;
 }
 
-.container--client-info p{
+.container--client-info p {
   font-size: 24px;
 }
 
-.container-verification-code{
+.container-verification-code {
   font-family: "Inter", sans-serif;
   margin: 20px 0px;
   font-size: 24px;
   color: #414B3B;
 }
 
-form input{
+form input {
   border-radius: 5px;
   border: 1px solid #414B3B;
   padding: 5px 10px;
@@ -36,10 +36,9 @@ form input{
   text-align: center;
 }
 
-.error-messenger{
+.error-messenger {
   font-size: 25px;
   font-weight: bold;
   color: red;
   margin: 20px;
 }
-

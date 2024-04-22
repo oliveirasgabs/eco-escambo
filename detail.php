@@ -35,8 +35,7 @@ session_start();
 
     <script>
         let products = null;
-        // get datas from file json
-        fetch('products.json')
+        fetch('products.json') //obtem dados do arquivo.json
             .then(response => response.json())
             .then(data => {
                 products = data;
@@ -44,12 +43,11 @@ session_start();
             })
 
         function showDetail() {
-            // remove datas default from HTML
             let detail = document.querySelector('.detail');
             let listProduct = document.querySelector('.listProduct');
             let productId = new URLSearchParams(window.location.search).get('id');
             let thisProduct = products.filter(value => value.id == productId)[0];
-            //if there is no product with id = productId => return to home page
+            //se o product id não for econtrando retorna a pagina
             if (!thisProduct) {
                 window.location.href = "/";
             }
