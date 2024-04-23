@@ -26,7 +26,7 @@ $_SESSION['codigo_verificacao'] = $codigo_verificacao;
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Validar Conta - EcoEscambo</title>
-  <link rel="stylesheet" href="/src/css/stylevalidaemail.css">
+  <link rel="stylesheet" href="./src/css/stylevalidaemail.css">
 </head>
 
 <body>

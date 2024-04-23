@@ -84,49 +84,51 @@ if (isset($_GET['search'])) {
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Produtos - EcoEscambo</title>
-    <link rel="stylesheet" href="/src/css/meusprodutos.css">
-    <link rel="shortcut icon" href="/src/img/header/logo-eco-escambo.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meus Produtos - EcoEscambo</title>
+  <link rel="stylesheet" href="./src/css/meusprodutos.css">
+  <link rel="shortcut icon" href="./src/img/header/logo-eco-escambo.jpg">
 </head>
 
 <body>
-    <?php require_once("./src/pages/header/header.php"); ?>
-    <div class="container--Prod">
-        <div class="filtro">
-            <div class="radio-group">
-                <label class="radio-button">
-                    <input type='radio' name='filter' value='all' <?php echo $filter === 'all' ? 'checked' : ''; ?> /> Todos | <span></span>
-                </label>
-                <label class="radio-button">
-                    <input type='radio' name='filter' value='interested' <?php echo $filter === 'interested' ? 'checked' : ''; ?> /> Somente os que há interessados | <span></span>
-                </label>
-            </div>
-            <form action="" method="GET">
-                <input type="text" name="search" placeholder="Pesquisar por nome...">
-                <button type="submit">Pesquisar</button>
-            </form>
-        </div>
-        <div class="containe--Principal">
-            <?php displayProducts($products); ?>
-        </div>
+  <?php require_once("./src/pages/header/header.php"); ?>
+  <div class="container--Prod">
+    <div class="filtro">
+      <div class="radio-group">
+        <label class="radio-button">
+          <input type='radio' name='filter' value='all' <?php echo $filter === 'all' ? 'checked' : ''; ?> /> Todos |
+          <span></span>
+        </label>
+        <label class="radio-button">
+          <input type='radio' name='filter' value='interested'
+            <?php echo $filter === 'interested' ? 'checked' : ''; ?> /> Somente os que há interessados | <span></span>
+        </label>
+      </div>
+      <form action="" method="GET">
+        <input type="text" name="search" placeholder="Pesquisar por nome...">
+        <button type="submit">Pesquisar</button>
+      </form>
     </div>
-    <?php require_once("./src/pages/footer/footer.html"); ?>
+    <div class="containe--Principal">
+      <?php displayProducts($products); ?>
+    </div>
+  </div>
+  <?php require_once("./src/pages/footer/footer.html"); ?>
 
-    <script>
-        const radioButtons = document.querySelectorAll('input[name="filter"]');
-        radioButtons.forEach(radioButton => {
-            radioButton.addEventListener('change', function() {
-                // Obtém o valor do filtro selecionado
-                const filter = this.value;
-                // Atualiza o URL com o filtro selecionado
-                const url = `?filter=${filter}`;
-                // Redireciona para a nova URL
-                window.location.href = url;
-            });
-        });
-    </script>
+  <script>
+  const radioButtons = document.querySelectorAll('input[name="filter"]');
+  radioButtons.forEach(radioButton => {
+    radioButton.addEventListener('change', function() {
+      // Obtém o valor do filtro selecionado
+      const filter = this.value;
+      // Atualiza o URL com o filtro selecionado
+      const url = `?filter=${filter}`;
+      // Redireciona para a nova URL
+      window.location.href = url;
+    });
+  });
+  </script>
 </body>
 
 </html>

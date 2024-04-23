@@ -11,7 +11,7 @@ if (!isset($_SESSION["logado"])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/src/img/header/logo-eco-escambo.jpg">
+  <link rel="shortcut icon" href="./src/img/header/logo-eco-escambo.jpg">
   <title>Cadastrar novo produto - EcoEscambo</title>
   <link rel="stylesheet" href="./src/css/style-signup-product.css">
 </head>

@@ -8,8 +8,8 @@ session_start();
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cadastro - EcoEscambo</title>
-  <link rel="stylesheet" href="/src/css/stylecadastro.css">
-  <link rel="shortcut icon" href="/src/img/header/logo-eco-escambo.jpg">
+  <link rel="stylesheet" href="./src/css/stylecadastro.css">
+  <link rel="shortcut icon" href="./src/img/header/logo-eco-escambo.jpg">
 </head>
 
 <body>
@@ -24,7 +24,8 @@ session_start();
           <div><label for="usuario">Nome Completo:</label></div>
           <div><input type="text" id="nomecompleto" name="name-complete" placeholder="Sem abreviar"></div>
           <div><label for="usuario">CPF:</label></div>
-          <div><input type="text" id="cpf-brasileiro" name="register-number-cpf" placeholder="Seu CPF sem hífen ou ponto"></div>
+          <div><input type="text" id="cpf-brasileiro" name="register-number-cpf"
+              placeholder="Seu CPF sem hífen ou ponto"></div>
           <div><label for="usuario">Email:</label></div>
           <div><input type="text" id="user-email" name="user-email" placeholder="Seu email"></div>
           <div><label for="senha">Senha:</label></div>
@@ -46,17 +47,17 @@ session_start();
 </body>
 
 <script>
-  function verificarSenhas() {
-    var senha = document.getElementById("senha").value;
-    var confirmarSenha = document.getElementById("confirmar_senha").value;
+function verificarSenhas() {
+  var senha = document.getElementById("senha").value;
+  var confirmarSenha = document.getElementById("confirmar_senha").value;
 
-    if (senha === confirmarSenha) {
-      btnCadastrar.style.display = "block";
-    } else {
-      btnCadastrar.style.display = "none";
-      alert("Erro: As senhas não coincidem.");
-    }
+  if (senha === confirmarSenha) {
+    btnCadastrar.style.display = "block";
+  } else {
+    btnCadastrar.style.display = "none";
+    alert("Erro: As senhas não coincidem.");
   }
+}
 </script>
 
 </html>
