@@ -1,84 +1,87 @@
 <?php
 session_start();
+if (!isset($_SESSION["logado"])) {
+  header("Location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogo - EcoEscambo</title>
-    <link rel="stylesheet" href="/src//css//stylecatalogo.css">
-    <link rel="shortcut icon" href="/src/img/header/logo-eco-escambo.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogo - EcoEscambo</title>
+  <link rel="stylesheet" href="/src//css//stylecatalogo.css">
+  <link rel="shortcut icon" href="/src/img/header/logo-eco-escambo.jpg">
 </head>
 
 <body>
-    <?php require_once("./src/pages/header/header.php") ?>
-    <div class="containerMax">
-        <div class="container">
-            <div class="title">Produtos</div>
-            <div class="usuario_dono"></div>
-            <div class="listProduct">
-            </div>
-            <div class="page"></div>
-        </div>
+  <?php require_once("./src/pages/header/header.php") ?>
+  <div class="containerMax">
+    <div class="container">
+      <div class="title">Produtos</div>
+      <div class="usuario_dono"></div>
+      <div class="listProduct">
+      </div>
+      <div class="page"></div>
+    </div>
 
-        <script>
-            let products = null;
-            let currentPage = 1;
-            let itemsPerPage = 8;
+    <script>
+    let products = null;
+    let currentPage = 1;
+    let itemsPerPage = 8;
 
-            fetch('products.json')
-                .then(response => response.json())
-                .then(data => {// Filtra os produtos para excluir os do usuário específico
-                    products = data.filter(product => product.usuario_dono !== 'Fernando Haddad');
-                    addDataToHTML();
-                });
+    fetch('products.json')
+      .then(response => response.json())
+      .then(data => { // Filtra os produtos para excluir os do usuário específico
+        products = data.filter(product => product.usuario_dono !== 'Fernando Haddad');
+        addDataToHTML();
+      });
 
-            function addDataToHTML() {
-                const listProductHTML = document.querySelector('.listProduct');
-                const page = document.querySelector('.page');
+    function addDataToHTML() {
+      const listProductHTML = document.querySelector('.listProduct');
+      const page = document.querySelector('.page');
 
-                const startIndex = (currentPage - 1) * itemsPerPage;
-                const endIndex = startIndex + itemsPerPage;
-                const currentProducts = products.slice(startIndex, endIndex);
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const currentProducts = products.slice(startIndex, endIndex);
 
-                listProductHTML.innerHTML = '';
+      listProductHTML.innerHTML = '';
 
-                currentProducts.forEach(product => {
-                    const newProduct = document.createElement('a');
-                    newProduct.href = '/detail.php?id=' + product.id;
-                    newProduct.classList.add('item');
-                    newProduct.innerHTML =
-                        `<img src="${product.image}" alt="">
+      currentProducts.forEach(product => {
+        const newProduct = document.createElement('a');
+        newProduct.href = '/detail.php?id=' + product.id;
+        newProduct.classList.add('item');
+        newProduct.innerHTML =
+          `<img src="${product.image}" alt="">
                         <h2>${product.name}</h2>
                         <h1>${product.usuario_dono}</h1>
                         <div class="button"><button type="button">Tenho Interesse</button></div>`;
-                    listProductHTML.appendChild(newProduct);
-                });
+        listProductHTML.appendChild(newProduct);
+      });
 
-                renderpage();
-            }
+      renderpage();
+    }
 
-            function renderpage() {
-                const page = document.querySelector('.page');
-                const totalPages = Math.ceil(products.length / itemsPerPage);
+    function renderpage() {
+      const page = document.querySelector('.page');
+      const totalPages = Math.ceil(products.length / itemsPerPage);
 
-                page.innerHTML = '';
+      page.innerHTML = '';
 
-                for (let i = 1; i <= totalPages; i++) {
-                    const pageButton = document.createElement('button');
-                    pageButton.textContent = i;
-                    pageButton.addEventListener('click', () => {
-                        currentPage = i;
-                        addDataToHTML();
-                    });
-                    page.appendChild(pageButton);
-                }
-            }
-        </script>
-    </div>
-    <?php require_once("./src/pages/footer/footer.html"); ?>
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.addEventListener('click', () => {
+          currentPage = i;
+          addDataToHTML();
+        });
+        page.appendChild(pageButton);
+      }
+    }
+    </script>
+  </div>
+  <?php require_once("./src/pages/footer/footer.html"); ?>
 </body>
 
 </html>

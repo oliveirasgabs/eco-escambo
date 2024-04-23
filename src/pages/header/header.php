@@ -4,7 +4,6 @@ $menuOnline = "<nav class='menu'>
     <li><a href='./catalogo.php'>Catálogo</a></li>
     <li><a href='#'>Meus interesses</a></li>
     <li><a href='./meusprodutos.php'>Meus produtos</a></li>
-    <li><a href='#'>Mensagens</a></li>
     <li><a href='./cadastrar-produto.php'><button>Cadastrar produto</button></a></li>
   </ul>
 </nav>";
@@ -38,7 +37,8 @@ if (isset($_SESSION["logado"]) == true) {
 <body>
   <div id="header">
     <div class="menu--content">
-      <div><a href="index.php"><img src="/src/img/header/logo-eco-escambo.jpg" alt="eco-escambo" id="company-logo"></a></div>
+      <div><a href="index.php"><img src="/src/img/header/logo-eco-escambo.jpg" alt="eco-escambo" id="company-logo"></a>
+      </div>
       <div id="company-name"><a href="index.php">Eco Escambo</a></div>
       <?php echo $menu
       ?>
