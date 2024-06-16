@@ -4,3 +4,6 @@ Repositório para armazenar o trabalho da disciplina de 3DAW.
 Divisão de Paginas
 Gaby: Tela de login , cadastro de usuário, cadastro de produto, tela de verificação e headers e footers;
 Erick: Tela de meus produtos, ofertas, analise de ofertas e index com carrossel;
+
+Gabrielly Oliveira dos Santos - 2210478300053
+Erick de Oliveira Rangel - 2210478300057

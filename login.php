@@ -2,6 +2,7 @@
 session_start();
 
 $errormessenger = "<p class='error-messenger'>Senha e/ou usuário incorreto(s).</p>";
+require './classes/db_connect.php'
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +38,8 @@ $errormessenger = "<p class='error-messenger'>Senha e/ou usuário incorreto(s).<
         <br>
         <span class="submmit-bottom"><input type="submit" value="Acessar"></span>
       </form>
-      <div><a href="esqueci-minha-senha.php">Esqueceu a sua senha?</a> | <a href="cadastro.php">Ainda não é usuário?</a></div>
+      <div><a href="esqueci-minha-senha.php">Esqueceu a sua senha?</a> | <a href="cadastro.php">Ainda não é usuário?</a>
+      </div>
     </div>
   </div>
 
