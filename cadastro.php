@@ -1,5 +1,37 @@
 <?php
 session_start();
+
+if (isset($_GET["erro"])) {
+  $erro = $_GET['erro'];
+  $errormessenger = "";
+
+  switch ($erro) {
+    case 'campos_vazios':
+        $errormessenger = "<p class='error--messenger'>Todos os campos devem ser preenchidos.</p>";
+        break;
+    case 'senha_curta':
+        $errormessenger = "<p class='error--messenger'>A senha deve ter pelo menos 6 caracteres.</p>";
+        break;
+    case 'senha_invalida':
+        $errormessenger = "<p class='error--messenger'>A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.</p>";
+        break;
+    case 'senhas_nao_coincidem':
+        $errormessenger = "<p class='error--messenger'>As senhas não coincidem.</p>";
+        break;
+    case 'email_invalido':
+        $errormessenger = "<p class='error--messenger'>O e-mail fornecido é inválido.</p>";
+        break;
+    default:
+        $errormessenger = "<p class='error--messenger'>Erro desconhecido. Entre em contato com o nosso suporte.</p>";
+        break;
+  }
+    
+}
+
+require './classes/db_connect.php';
+
+?>
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,8 +50,16 @@ session_start();
   <div class="container--sign-up">
 
     <h1>Cadastre-se abaixo para fazer suas trocas! </h1>
+    <!-- Caso ocorra um erro na página de valida cadastro, irá aparecer uma mensagem aqui !-->
+    <?php
+      if (isset($_GET["erro"])) {
+        echo $errormessenger;
+      }
+    ?>
+
     <div class="container--info-sign-up">
-      <form method="post" action="validaemail.php">
+
+      <form id="cadastroForm" method="post" action="valida-cadastro.php">
         <div class="container--labels">
           <div><label for="usuario">Nome Completo:</label></div>
           <div><input type="text" id="nomecompleto" name="name-complete" placeholder="Sem abreviar"></div>
@@ -58,6 +98,40 @@ function verificarSenhas() {
     alert("Erro: As senhas não coincidem.");
   }
 }
+
+/* document.getElementById("cadastroForm").addEventListener("submit", function(event) {
+  var nomeCompleto = document.getElementById("nomecompleto").value.trim();
+  var cpf = document.getElementById("cpf-brasileiro").value.trim();
+  var email = document.getElementById("user-email").value.trim();
+  var senha = document.getElementById("senha").value.trim();
+  var confirmarSenha = document.getElementById("confirmar_senha").value.trim();
+
+  if (!nomeCompleto || !cpf || !email || !senha || !confirmarSenha) {
+    alert("Erro: Todos os campos devem ser preenchidos.");
+    event.preventDefault();
+    return;
+  }
+
+  if (senha.length < 6) {
+    alert("Erro: A senha deve ter pelo menos 6 caracteres.");
+    event.preventDefault();
+    return;
+  }
+
+  var senhaRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
+  if (!senhaRegex.test(senha)) {
+    alert("Erro: A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.");
+    event.preventDefault();
+    return;
+  }
+
+  if (senha !== confirmarSenha) {
+    alert("Erro: As senhas não coincidem.");
+    event.preventDefault();
+    return;
+  }
+
+}); */
 </script>
 
 </html>

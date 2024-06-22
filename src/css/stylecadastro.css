@@ -1,3 +1,11 @@
+.error--messenger{
+  font-family: "League Spartan", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  color: red;
+  margin-bottom: 20px;
+}
+
 .container--sign-up {
   border-top: 2px solid #414B3B;
   padding: 20px;

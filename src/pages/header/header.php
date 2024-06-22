@@ -5,6 +5,7 @@ $menuOnline = "<nav class='menu'>
     <li><a href='#'>Meus interesses</a></li>
     <li><a href='./meusprodutos.php'>Meus produtos</a></li>
     <li><a href='./cadastrar-produto.php'><button>Cadastrar produto</button></a></li>
+    <li><a href='./logout.php'>Sair</a></li>
   </ul>
 </nav>";
 
