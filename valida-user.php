@@ -19,6 +19,8 @@ try {
             // Verifica se a conta está verificada
             if ($user['conta_verificada'] == 1) {
                 $_SESSION["logado"] = true;
+                $_SESSION['usuario_id'] = $user['id'];
+                $_SESSION['user'] = $user['nome'];
                 header("Location: index.php");
                 exit();
             } else {
