@@ -47,7 +47,8 @@ $_SESSION['codigo_verificacao'] = $codigo_verificacao;
     <form method="post" action="valida-email.php">
       <div class="container-verification-code">
         <div><label for="senha">Código de verificação:</label></div>
-        <div><input type="numbers" id="verification-code" name="verification-code"></div>
+        <div><input type="numbers" id="verification-code" name="verification-code" placeholder="Digite o código aqui">
+        </div>
         <div><button class="submit-buttom" type="submit" value="Entrar">Validar</button></div>
       </div>
     </form>

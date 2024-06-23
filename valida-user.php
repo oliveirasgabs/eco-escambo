@@ -2,8 +2,8 @@
 session_start();
 require './classes/db_connect.php';
 
-$usuario = $_POST["username"];
-$senha = $_POST["password"];
+$usuario = filter_input(INPUT_POST, 'user-email', FILTER_SANITIZE_EMAIL);
+$senha = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
 try {
     // Prepara a declaração SQL para selecionar o usuário
@@ -16,10 +16,18 @@ try {
     if ($stmt->rowCount() == 1) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         if ($senha === $user['senha']) {
-            $_SESSION["logado"] = true;
-            $_SESSION["user"] = $user['nome'];
-            header("Location: index.php");
-            exit();
+            // Verifica se a conta está verificada
+            if ($user['conta_verificada'] == 1) {
+                $_SESSION["logado"] = true;
+                header("Location: index.php");
+                exit();
+            } else {
+                // Conta não verificada, redireciona para a página de validação
+                $_SESSION["user_name"] = $user['nome'];
+                $_SESSION["user_email"] = $user['email'];
+                header("Location: valida-contareal.php");
+                exit();
+            }
         } else {
             // Senha incorreta
             header("Location: login.php?erro=1");

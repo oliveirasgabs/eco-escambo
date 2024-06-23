@@ -18,6 +18,7 @@
 }
 
 .container--client-info p {
+  font-family: "Inter", sans-serif;
   font-size: 24px;
 }
 
@@ -37,6 +38,7 @@ form input {
 }
 
 .error-messenger {
+  font-family: "Inter", sans-serif;
   font-size: 25px;
   font-weight: bold;
   color: red;

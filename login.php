@@ -30,7 +30,7 @@ require './classes/db_connect.php'
       <form method="post" action="valida-user.php">
         <label for="usuario">Email</label>
         <br>
-        <input type="text" id="usuario" name="username" placeholder="Digite seu email cadastrado">
+        <input type="text" id="usuario" name="user-email" placeholder="Digite seu email cadastrado">
         <br>
         <label for="senha">Senha</label>
         <br>
