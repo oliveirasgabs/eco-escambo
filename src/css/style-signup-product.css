@@ -43,3 +43,10 @@
   height: 45px;
   margin-bottom: 50px;
 }
+
+.error-messenger {
+  font-size: 25px;
+  font-weight: bold;
+  color: red;
+  margin-bottom: 20px;
+}

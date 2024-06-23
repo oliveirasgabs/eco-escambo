@@ -22,7 +22,7 @@ if (!isset($_SESSION["logado"])) {
     <div class="sign-up-title">
       <h1>Cadastre o seu produto</h1>
       <?php if (isset($_GET['erro'])): ?>
-      <div class="error-message">
+      <div class="error-messenger">
         <?php
         switch ($_GET['erro']) {
             case 1:

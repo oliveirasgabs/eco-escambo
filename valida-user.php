@@ -27,6 +27,7 @@ try {
                 // Conta não verificada, redireciona para a página de validação
                 $_SESSION["user_name"] = $user['nome'];
                 $_SESSION["user_email"] = $user['email'];
+                $_SESSION['usuario_id'] = $user['id'];
                 header("Location: valida-contareal.php");
                 exit();
             }

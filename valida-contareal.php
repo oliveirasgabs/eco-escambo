@@ -4,6 +4,7 @@ session_start();
 
 $user_email = $_SESSION["user_email"];
 $user_name = $_SESSION["user_name"];
+$user_id = $_SESSION["usuario_id"];
 
 $codigo_verificacao = mt_rand(100000, 999999); // Gera um número aleatório de 6 dígitos
 
