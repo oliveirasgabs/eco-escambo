@@ -45,7 +45,7 @@ function getUserProducts($pdo, $userId)
 if (isset($_GET['id'])) {
   $productId = $_GET['id'];
   $product = getProductById($pdo, $productId);
-  $interessados = getInteressadosByProduct($pdo, $productId); // Obter os interessados
+  $interessados = getInteressadosByProduct($pdo, $productId);
 } else {
   header("Location: meusprodutos.php");
   exit;
@@ -187,8 +187,6 @@ if (isset($_GET['id'])) {
       const formData = new FormData(form);
       formData.append("action", "propor");
 
-
-
       fetch('processar_oferta.php', {
           method: 'POST',
           body: formData
@@ -197,18 +195,16 @@ if (isset($_GET['id'])) {
           if (!response.ok) {
             throw new Error('Erro ao processar a requisição HTTP: ' + response.status);
           }
-          return response.json(); // Espera-se que o servidor retorne JSON
+          return response.json();
         })
         .then(data => {
           // Tratar a resposta do servidor
           console.log('Resposta do servidor:', data);
-          // Atualizar a interface ou fazer outras operações necessárias após o sucesso
-          // Por exemplo, você pode querer atualizar a lista de interessados
-          location.reload(); // Recarregar a página após enviar a proposta (opcional)
+          location.reload();
         })
         .catch(error => {
           console.error('Erro ao enviar nova proposta:', error);
-          // Tratar o erro, exibir uma mensagem para o usuário, etc.
+
         });
     }
   </script>

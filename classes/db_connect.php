@@ -1,15 +1,15 @@
 <?php
   // Configurações de conexão com o banco de dados para infinityfree
-  $host = 'sql208.infinityfree.com';
-  $dbname = 'if0_36150961_ecoescambo';
-  $username = 'if0_36150961';
-  $password = 'OwIF1rWmhTj1p3';
+  // $host = 'sql208.infinityfree.com';
+  // $dbname = 'if0_36150961_ecoescambo';
+  // $username = 'if0_36150961';
+  // $password = 'OwIF1rWmhTj1p3';
 
   //  // Configurações de conexão com o banco de dados local
-  //  $host = 'localhost';
-  //  $dbname = 'ecoescambo';
-  //  $username = 'root';
-  //  $password = '';
+    $host = 'localhost';
+    $dbname = 'ecoescambo';
+    $username = 'root';
+    $password = '';
 
   try {
       // Cria uma nova instância do PDO

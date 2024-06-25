@@ -1,22 +1,21 @@
 <?php
 session_start();
-require_once './classes/db_connect.php'; // Inclua o arquivo de conexão com o banco de dados
+require_once './classes/db_connect.php';
 
-// Verifica se o usuário está logado
-if (!isset($_SESSION["logado"])) {
-  header("Location: login.php");
-  exit;
-}
+// Obtenha o ID do usuário logado, se não estiver logado, $userId será vazio
+$userId = isset($_SESSION["usuario_id"]) ? $_SESSION["usuario_id"] : null;
 
-// Obtenha o ID do usuário logado
-$userId = $_SESSION["usuario_id"];
-
-// Função para buscar produtos do banco de dados, excluindo os produtos do usuário atual
+// Função para buscar produtos do banco de dados, todos os produtos se $userId não estiver definido
 function getSuggestedProducts($pdo, $userId)
 {
-  $sql = "SELECT id, nome, descricao, foto FROM produtos WHERE estado = 'disponível' AND usuario_id != ?";
-  $stmt = $pdo->prepare($sql);
-  $stmt->execute([$userId]);
+  if ($userId) {
+    $sql = "SELECT id, nome, descricao, foto FROM produtos WHERE estado = 'disponível' AND usuario_id != ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$userId]);
+  } else {
+    $sql = "SELECT id, nome, descricao, foto FROM produtos WHERE estado = 'disponível'";
+    $stmt = $pdo->query($sql);
+  }
   return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 

@@ -1,53 +1,38 @@
 <?php
 session_start();
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION["logado"])) {
   header("Location: login.php");
   exit;
 }
 
-// Recupera o ID do usuário logado da sessão
 $usuario_id = $_SESSION['usuario_id'];
 
-// Conecta ao banco de dados utilizando PDO
 require_once './classes/db_connect.php';
 
-// Verifica se há uma pesquisa por nome
+// Inicializa variáveis
 $search = isset($_GET['search']) ? $_GET['search'] : '';
+$products = [];
 
 try {
-  // Ajusta a consulta SQL para exibir apenas os produtos em que o usuário aparece na coluna interessado_id
   $sql = "SELECT p.id, p.nome AS name, p.descricao, p.foto AS image, p.estado
           FROM produtos p
           JOIN interesses i ON p.id = i.produto_id
           WHERE i.interessado_id = :usuario_id";
 
-  // Adiciona condição para pesquisa por nome
   if (!empty($search)) {
     $sql .= " AND LOWER(p.nome) LIKE :search";
     $searchTerm = "%" . strtolower($search) . "%";
   }
-
-  // Ordena por estado decrescente
   $sql .= " ORDER BY p.estado DESC";
-
-  // Prepara a consulta
   $stmt = $pdo->prepare($sql);
-
-  // Bind dos parâmetros
   $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
   if (!empty($search)) {
     $stmt->bindParam(':search', $searchTerm, PDO::PARAM_STR);
   }
-
-  // Executa a consulta
   $stmt->execute();
-
-  // Obtém o resultado da consulta
   $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (Exception $e) {
-  // Tratamento de erro
   die("Erro ao executar consulta: " . $e->getMessage());
 }
 ?>
@@ -65,6 +50,7 @@ try {
 
 <body>
   <?php require_once("./src/pages/header/header.php"); ?>
+
   <div class="container--Prod">
     <div class="filtro">
       <form action="" method="GET">
@@ -77,6 +63,7 @@ try {
     </div>
     <div class="page"></div>
   </div>
+
   <?php require_once("./src/pages/footer/footer.html"); ?>
 
   <script>
@@ -93,11 +80,11 @@ try {
         productDiv.classList.add('card');
 
         let productHTML = `
-                <img src="${product.image}" alt="">
-                <h2>${product.name}</h2>
-                <div class="button-group">
-                  <div class="button-b3"><button type="button" onclick="window.location.href='./detail.php?id=${product.id}'">Ver Detalhes</button></div>
-                </div>`;
+          <img src="${product.image}" alt="">
+          <h2>${product.name}</h2>
+          <div class="button-group">
+            <div class="button-b3"><button type="button" onclick="window.location.href='./detail.php?id=${product.id}'">Ver Detalhes</button></div>
+          </div>`;
 
         productDiv.innerHTML = productHTML;
         container.appendChild(productDiv);
