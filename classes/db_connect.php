@@ -5,6 +5,12 @@
   $username = 'if0_36150961';
   $password = 'OwIF1rWmhTj1p3';
 
+  //  // Configurações de conexão com o banco de dados local
+  //  $host = 'localhost';
+  //  $dbname = 'ecoescambo';
+  //  $username = 'root';
+  //  $password = '';
+
   try {
       // Cria uma nova instância do PDO
       $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
