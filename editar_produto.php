@@ -1,17 +1,27 @@
 <?php
+session_start();
+
+if (!isset($_SESSION["logado"])) {
+    header("Location: login.php");
+    exit;
+}
+
+$usuario_id = $_SESSION['usuario_id'];
+
+
+require_once './classes/db_connect.php';
+
 // Verifica se o ID do produto foi enviado via GET
 if (isset($_GET['id'])) {
     $productId = $_GET['id'];
 
-    // Carrega os produtos do arquivo JSON
-    $products = json_decode(file_get_contents('products.json'), true);
+    // Obter os dados do produto do banco de dados
+    $sql = "SELECT nome, descricao, foto FROM produtos WHERE id = :id AND usuario_id = :usuario_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':id' => $productId, ':usuario_id' => $usuario_id]);
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Procura o índice do produto com o ID especificado
-    $index = array_search($productId, array_column($products, 'id'));
-
-    // Se o produto for encontrado, exibe o formulário de edição
-    if ($index !== false) {
-        $product = $products[$index];
+    if ($product) {
 ?>
 
         <!DOCTYPE html>
@@ -21,18 +31,27 @@ if (isset($_GET['id'])) {
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Editar Produto</title>
+            <link rel="shortcut icon" href="./src/img/header/logo-eco-escambo.jpg">
+            <link rel="stylesheet" href="./src/css/editarproduto.css">
         </head>
 
         <body>
-            <h1>Editar Produto</h1>
-            <form action="editar_produto_backend.php" method="POST">
-                <input type="hidden" name="id" value="<?php echo $product['id']; ?>">
-                <label for="name">Nome:</label>
-                <input type="text" id="name" name="name" value="<?php echo $product['name']; ?>"><br><br>
-                <label for="usuario_dono">usuario_dono:</label>
-                <input type="text" id="usuario_dono" name="usuario_dono" value="<?php echo $product['usuario_dono']; ?>"><br><br>
-                <button type="submit">Salvar</button>
-            </form>
+            <?php require_once("./src/pages/header/header.php"); ?>
+            <div class="container-principal">
+                <h1>Editar Produto</h1>
+                <form action="editar_produto_backend.php" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="id" value="<?php echo $productId; ?>">
+                    <label for="name">Nome:</label>
+                    <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($product['nome']); ?>"><br><br>
+                    <label for="descricao">Descrição:</label>
+                    <textarea id="descricao" name="descricao"><?php echo htmlspecialchars($product['descricao']); ?></textarea><br><br>
+                    <label for="foto">Imagem:</label>
+                    <input type="file" id="foto" name="foto"><br><br>
+                    <img src="<?php echo htmlspecialchars($product['foto']); ?>" alt="Imagem atual" style="width: 150px; height: auto;"><br><br>
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+            <?php require_once("./src/pages/footer/footer.html"); ?>
         </body>
 
         </html>

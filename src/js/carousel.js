@@ -62,6 +62,9 @@ const initSlider = () => {
         updateScrollThumbPosition();
         handleSlideButtons();
     });
+
+    // Initialize slider buttons visibility on load
+    handleSlideButtons();
 }
 
 window.addEventListener("resize", initSlider);

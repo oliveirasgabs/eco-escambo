@@ -7,25 +7,24 @@ if (isset($_GET["erro"])) {
 
   switch ($erro) {
     case 'campos_vazios':
-        $errormessenger = "<p class='error--messenger'>Todos os campos devem ser preenchidos.</p>";
-        break;
+      $errormessenger = "<p class='error--messenger'>Todos os campos devem ser preenchidos.</p>";
+      break;
     case 'senha_curta':
-        $errormessenger = "<p class='error--messenger'>A senha deve ter pelo menos 6 caracteres.</p>";
-        break;
+      $errormessenger = "<p class='error--messenger'>A senha deve ter pelo menos 6 caracteres.</p>";
+      break;
     case 'senha_invalida':
-        $errormessenger = "<p class='error--messenger'>A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.</p>";
-        break;
+      $errormessenger = "<p class='error--messenger'>A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.</p>";
+      break;
     case 'senhas_nao_coincidem':
-        $errormessenger = "<p class='error--messenger'>As senhas não coincidem.</p>";
-        break;
+      $errormessenger = "<p class='error--messenger'>As senhas não coincidem.</p>";
+      break;
     case 'email_invalido':
-        $errormessenger = "<p class='error--messenger'>O e-mail fornecido é inválido.</p>";
-        break;
+      $errormessenger = "<p class='error--messenger'>O e-mail fornecido é inválido.</p>";
+      break;
     default:
-        $errormessenger = "<p class='error--messenger'>Erro desconhecido. Entre em contato com o nosso suporte.</p>";
-        break;
+      $errormessenger = "<p class='error--messenger'>Erro desconhecido. Entre em contato com o nosso suporte.</p>";
+      break;
   }
-    
 }
 
 require './classes/db_connect.php';
@@ -52,9 +51,9 @@ require './classes/db_connect.php';
     <h1>Cadastre-se abaixo para fazer suas trocas! </h1>
     <!-- Caso ocorra um erro na página de valida cadastro, irá aparecer uma mensagem aqui !-->
     <?php
-      if (isset($_GET["erro"])) {
-        echo $errormessenger;
-      }
+    if (isset($_GET["erro"])) {
+      echo $errormessenger;
+    }
     ?>
 
     <div class="container--info-sign-up">
@@ -64,8 +63,7 @@ require './classes/db_connect.php';
           <div><label for="usuario">Nome Completo:</label></div>
           <div><input type="text" id="nomecompleto" name="name-complete" placeholder="Sem abreviar"></div>
           <div><label for="usuario">CPF:</label></div>
-          <div><input type="text" id="cpf-brasileiro" name="register-number-cpf"
-              placeholder="Seu CPF sem hífen ou ponto"></div>
+          <div><input type="text" id="cpf-brasileiro" name="register-number-cpf" placeholder="Seu CPF sem hífen ou ponto"></div>
           <div><label for="usuario">Email:</label></div>
           <div><input type="text" id="user-email" name="user-email" placeholder="Seu email"></div>
           <div><label for="senha">Senha:</label></div>
@@ -87,51 +85,17 @@ require './classes/db_connect.php';
 </body>
 
 <script>
-function verificarSenhas() {
-  var senha = document.getElementById("senha").value;
-  var confirmarSenha = document.getElementById("confirmar_senha").value;
+  function verificarSenhas() {
+    var senha = document.getElementById("senha").value;
+    var confirmarSenha = document.getElementById("confirmar_senha").value;
 
-  if (senha === confirmarSenha) {
-    btnCadastrar.style.display = "block";
-  } else {
-    btnCadastrar.style.display = "none";
-    alert("Erro: As senhas não coincidem.");
+    if (senha === confirmarSenha) {
+      btnCadastrar.style.display = "block";
+    } else {
+      btnCadastrar.style.display = "none";
+      alert("Erro: As senhas não coincidem.");
+    }
   }
-}
-
-/* document.getElementById("cadastroForm").addEventListener("submit", function(event) {
-  var nomeCompleto = document.getElementById("nomecompleto").value.trim();
-  var cpf = document.getElementById("cpf-brasileiro").value.trim();
-  var email = document.getElementById("user-email").value.trim();
-  var senha = document.getElementById("senha").value.trim();
-  var confirmarSenha = document.getElementById("confirmar_senha").value.trim();
-
-  if (!nomeCompleto || !cpf || !email || !senha || !confirmarSenha) {
-    alert("Erro: Todos os campos devem ser preenchidos.");
-    event.preventDefault();
-    return;
-  }
-
-  if (senha.length < 6) {
-    alert("Erro: A senha deve ter pelo menos 6 caracteres.");
-    event.preventDefault();
-    return;
-  }
-
-  var senhaRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
-  if (!senhaRegex.test(senha)) {
-    alert("Erro: A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula e um número.");
-    event.preventDefault();
-    return;
-  }
-
-  if (senha !== confirmarSenha) {
-    alert("Erro: As senhas não coincidem.");
-    event.preventDefault();
-    return;
-  }
-
-}); */
 </script>
 
 </html>

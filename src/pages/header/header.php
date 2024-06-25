@@ -2,7 +2,7 @@
 $menuOnline = "<nav class='menu'>
   <ul>
     <li><a href='./catalogo.php'>Catálogo</a></li>
-    <li><a href='#'>Meus interesses</a></li>
+    <li><a href='./meusinteresses.php'>Meus interesses</a></li>
     <li><a href='./meusprodutos.php'>Meus produtos</a></li>
     <li><a href='./cadastrar-produto.php'><button>Cadastrar produto</button></a></li>
     <li><a href='./logout.php'>Sair</a></li>

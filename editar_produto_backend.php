@@ -1,29 +1,50 @@
 <?php
+session_start();
+require_once './classes/db_connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $productId = $_POST['id'];
     $productName = $_POST['name'];
-    $productOwner = $_POST['usuario_dono'];
+    $productDescription = $_POST['descricao'];
+    $uploadDirectory = 'uploads/';
 
-    // Carrega os produtos do arquivo JSON
-    $products = json_decode(file_get_contents('products.json'), true);
+    // Processar upload de imagem
+    if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+        $fileTmpPath = $_FILES['foto']['tmp_name'];
+        $fileName = $_FILES['foto']['name'];
+        $fileNameCmps = explode(".", $fileName);
+        $fileExtension = strtolower(end($fileNameCmps));
 
-    // Procura o índice do produto com o ID especificado
-    $index = array_search($productId, array_column($products, 'id'));
+        $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+        $dest_path = $uploadDirectory . $newFileName;
 
-    // Se o produto for encontrado, atualiza os dados
-    if ($index !== false) {
-        $products[$index]['name'] = $productName;
-        $products[$index]['usuario_dono'] = $productOwner;
+        if (move_uploaded_file($fileTmpPath, $dest_path)) {
+            $uploadedFilePath = $dest_path;
+        } else {
+            echo "Houve um erro ao mover o arquivo enviado.";
+            exit();
+        }
+    } else {
+        $uploadedFilePath = null;
+    }
 
-        // Salva os produtos atualizados de volta no arquivo JSON
-        file_put_contents('products.json', json_encode($products));
+    // Atualizar os dados do produto no banco de dados
+    try {
+        if ($uploadedFilePath) {
+            $sql = "UPDATE produtos SET nome = ?, descricao = ?, foto = ? WHERE id = ?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$productName, $productDescription, $uploadedFilePath, $productId]);
+        } else {
+            $sql = "UPDATE produtos SET nome = ?, descricao = ? WHERE id = ?";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([$productName, $productDescription, $productId]);
+        }
 
         // Redireciona de volta para a página de produtos
         header("Location: meusprodutos.php");
         exit();
-    } else {
-        echo "Produto não encontrado.";
+    } catch (PDOException $e) {
+        echo "Erro ao atualizar produto: " . $e->getMessage();
     }
 } else {
     echo "Método de requisição inválido.";

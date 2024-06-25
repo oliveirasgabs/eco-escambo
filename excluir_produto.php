@@ -1,24 +1,41 @@
 <?php
+session_start();
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION["logado"])) {
+    header("Location: login.php");
+    exit;
+}
+
+$usuario_id = $_SESSION['usuario_id'];
+
+
+require_once './classes/db_connect.php';
+
 if (isset($_GET['id'])) {
     $productId = $_GET['id'];
 
-    $products = json_decode(file_get_contents('products.json'), true);
+    // Verifica se o produto existe e pertence ao usuário atual
+    $sql = "SELECT id FROM produtos WHERE id = :id AND usuario_id = :usuario_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':id' => $productId, ':usuario_id' => $usuario_id]);
+    $product = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    $index = array_search($productId, array_column($products, 'id'));
+    if ($product) {
+        // Deletar o produto do banco de dados
+        $sql = "DELETE FROM produtos WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
 
-    // Se o produto for encontrado vai excluilo-o
-    if ($index !== false) {
-        unset($products[$index]);
-
-        // Salvar os produtos atualizados de volta no arquivo JSON
-        file_put_contents('products.json', json_encode($products));
-
-        // Redirecionar de volta para a página de produtos
-        header("Location: meusprodutos.php");
-        exit();
+        if ($stmt->execute([':id' => $productId])) {
+            // Redirecionar de volta para a página de produtos
+            header("Location: meusprodutos.php");
+            exit();
+        } else {
+            echo "Erro ao excluir produto.";
+        }
     } else {
-        //redirecionar para a página de produtos ou exibir uma mensagem de erro caso em que o produto com o ID especificado não é encontrado
+        echo "Produto não encontrado ou você não tem permissão para excluí-lo.";
     }
 } else {
-    // caso em que nenhum ID de produto é fornecido redirecionar para a página de produtos ou exibir uma mensagem de erro
+    echo "ID do produto não especificado.";
 }

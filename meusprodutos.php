@@ -1,85 +1,72 @@
 <?php
 session_start();
 
-$products = json_decode(file_get_contents('products.json'), true);
-
-// Defina o nome do usuário específico
-$usuario_especifico = "Fernando Haddad";
-
-// Lógica para filtrar os produtos com interessados
-function filterProductsByInterest($products)
-{
-    $interestedProducts = array_filter($products, function ($product) {
-        return isset($product['interested']) && $product['interested'] === true;
-    });
-    return $interestedProducts;
+// Verifica se o usuário está logado
+if (!isset($_SESSION["logado"])) {
+  header("Location: login.php");
+  exit;
 }
 
-// Lógica para pesquisar produtos por nome
-function searchProductsByName($products, $name)
-{
-    $results = array();
-    foreach ($products as $product) {
-        $productName = strtolower($product['name']);
-        $searchTerm = strtolower($name);
-        // Verifica se o nome do produto contém o termo de pesquisa, em caso de falha na pesquisa exibir todos os produtos
-        if (strpos($productName, $searchTerm) !== false) {
-            $results[] = $product;
-        }
-    }
-    return $results;
-}
+// Recupera o ID do usuário logado da sessão
+$usuario_id = $_SESSION['usuario_id'];
 
-// Função para exibir os produtos
-function displayProducts($products)
-{
-    global $usuario_especifico;
-    foreach ($products as $product) {
-        // Verifica se o produto pertence ao usuário específico
-        if ($product['usuario_dono'] !== $usuario_especifico) {
-            continue;
-        }
-        echo '<div class="card">';
-        echo '<img src="' . $product['image'] . '" alt="">';
-        echo '<h2>' . $product['name'] . '</h2>';
-        echo '<div class="button-group">';
-        // Botão "Editar" apenas se não houver interessados
-        echo '<div class="btn-edit">';
-        if (!$product['interested']) {
-            echo '<div class="button-b1"><button type="button" onclick="window.location.href=\'editar_produto.php?id=' . $product['id'] . '\'">Editar</button></div>';
-        }
-        // Botão "Excluir"
-        echo '<div class="button-b2"><button type="button" onclick="window.location.href=\'excluir_produto.php?id=' . $product['id'] . '\'">Excluir</button></div>';
-        echo '</div>';
-        // Botão "Ver Interessados" apenas se houver interessados
-        if ($product['interested']) {
-            echo '<div class="button-b3"><button type="button" onclick="window.location.href=\'ofertas_recebidas.php?id=' . $product['id'] . '&user=' . urlencode($usuario_especifico) . '\'">Ver Interessados</button></div>';
-        }
-        echo '</div>';
-        echo '</div>';
-    }
-}
+// Conecta ao banco de dados utilizando PDO
+require_once './classes/db_connect.php';
 
+// Verifica o filtro selecionado
+$filter = isset($_GET['filter']) ? $_GET['filter'] : 'all';
 
-// Filtros, se possiveis
-if (isset($_GET['filter'])) {
-    $filter = $_GET['filter'];
-    switch ($filter) {
-        case 'interested':
-            $products = filterProductsByInterest($products);
-            break;
-    }
-} else {
-    // Se nenhum filtro for selecionado, exibir todos os produtos
-    $filter = 'all';
-}
+// Verifica se há uma pesquisa por nome
+$search = isset($_GET['search']) ? $_GET['search'] : '';
 
-// Aplicar pesquisa por nome
-if (isset($_GET['search'])) {
-    $searchTerm = $_GET['search'];
-    $products = searchProductsByName($products, $searchTerm);
+try {
+  // Ajusta a consulta SQL com base no filtro e na pesquisa por nome
+  if ($filter == 'interested') {
+    $sql = "SELECT p.id, p.nome AS name, p.descricao, p.foto AS image, p.estado,
+                       COUNT(i.produto_id) AS num_interessados
+                FROM produtos p
+                LEFT JOIN interesses i ON p.id = i.produto_id
+                WHERE p.usuario_id = :usuario_id AND p.estado IN ('disponível', 'reservado')
+                GROUP BY p.id
+                HAVING COALESCE(num_interessados, 0) > 0";
+  } else {
+    $sql = "SELECT p.id, p.nome AS name, p.descricao, p.foto AS image, p.estado,
+                       COUNT(i.produto_id) AS num_interessados
+                FROM produtos p
+                LEFT JOIN interesses i ON p.id = i.produto_id
+                WHERE p.usuario_id = :usuario_id AND p.estado IN ('disponível', 'reservado')
+                GROUP BY p.id";
+  }
+
+  // Adiciona condição para pesquisa por nome
+  if (!empty($search)) {
+    $sql .= " HAVING LOWER(name) LIKE :search";
+    $searchTerm = "%" . strtolower($search) . "%";
+  }
+
+  // Ordena por estado decrescente
+  $sql .= " ORDER BY p.estado DESC";
+
+  // Prepara a consulta
+  $stmt = $pdo->prepare($sql);
+
+  // Bind dos parâmetros
+  $stmt->bindParam(':usuario_id', $usuario_id, PDO::PARAM_INT);
+  if (!empty($search)) {
+    $stmt->bindParam(':search', $searchTerm, PDO::PARAM_STR);
+  }
+
+  // Executa a consulta
+  $stmt->execute();
+
+  // Obtém o resultado da consulta
+  $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (Exception $e) {
+  // Tratamento de erro
+  die("Erro ao executar consulta: " . $e->getMessage());
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -97,12 +84,12 @@ if (isset($_GET['search'])) {
     <div class="filtro">
       <div class="radio-group">
         <label class="radio-button">
-          <input type='radio' name='filter' value='all' <?php echo $filter === 'all' ? 'checked' : ''; ?> /> Todos |
+          <input type='radio' name='filter' value='all' id='filterAll' <?php echo ($filter == 'all') ? 'checked' : ''; ?> /> Todos |
           <span></span>
         </label>
         <label class="radio-button">
-          <input type='radio' name='filter' value='interested'
-            <?php echo $filter === 'interested' ? 'checked' : ''; ?> /> Somente os que há interessados | <span></span>
+          <input type='radio' name='filter' value='interested' id='filterInterested' <?php echo ($filter == 'interested') ? 'checked' : ''; ?> /> Somente os que há interessados |
+          <span></span>
         </label>
       </div>
       <form action="" method="GET">
@@ -111,24 +98,108 @@ if (isset($_GET['search'])) {
       </form>
     </div>
     <div class="containe--Principal">
-      <?php displayProducts($products); ?>
+      <!-- Os produtos serão renderizados dinamicamente pelo JavaScript -->
     </div>
+    <div class="page"></div>
   </div>
   <?php require_once("./src/pages/footer/footer.html"); ?>
 
   <script>
-  const radioButtons = document.querySelectorAll('input[name="filter"]');
-  radioButtons.forEach(radioButton => {
-    radioButton.addEventListener('change', function() {
-      // Obtém o valor do filtro selecionado
-      const filter = this.value;
-      // Atualiza o URL com o filtro selecionado
-      const url = `?filter=${filter}`;
-      // Redireciona para a nova URL
-      window.location.href = url;
+    const products = <?php echo json_encode($products); ?>;
+    let currentPage = 1;
+    const itemsPerPage = 6;
+
+    function displayProducts(productsToDisplay) {
+      const container = document.querySelector('.containe--Principal');
+      container.innerHTML = '';
+
+      productsToDisplay.forEach(product => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('card');
+
+        let productHTML = `
+                <img src="${product.image}" alt="">
+                <h2>${product.name}</h2>
+                <div class="button-group">`;
+
+        if (product.num_interessados === 0) {
+          productHTML += `
+                    <div class="btn-edit">
+                        <div class="button-b1"><button type="button" onclick="window.location.href='editar_produto.php?id=${product.id}'">Editar</button></div>
+                        <div class="button-b2"><button type="button" class="delete-button" data-id="${product.id}">Excluir</button></div>
+                    </div>`;
+        }
+
+        if (product.num_interessados > 0) {
+          productHTML += `<div class="button-b3"><button type="button" onclick="window.location.href='ofertas_recebidas.php?id=${product.id}'">Ver Interessados</button></div>`;
+        }
+
+        productHTML += `</div></div>`;
+        productDiv.innerHTML = productHTML;
+        container.appendChild(productDiv);
+      });
+
+      // Adiciona o evento de confirmação para os botões de exclusão
+      document.querySelectorAll('.delete-button').forEach(button => {
+        button.addEventListener('click', (event) => {
+          const productId = event.target.dataset.id;
+          if (confirm("Você tem certeza que deseja excluir este produto?")) {
+            window.location.href = `excluir_produto.php?id=${productId}`;
+          }
+        });
+      });
+    }
+
+    function addDataToHTML() {
+      const startIndex = (currentPage - 1) * itemsPerPage;
+      const endIndex = startIndex + itemsPerPage;
+      const currentProducts = products.slice(startIndex, endIndex);
+
+      displayProducts(currentProducts);
+      renderPage(products);
+    }
+
+    function renderPage(filteredProducts) {
+      const page = document.querySelector('.page');
+      const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+
+      page.innerHTML = '';
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.addEventListener('click', () => {
+          currentPage = i;
+          const startIndex = (currentPage - 1) * itemsPerPage;
+          const endIndex = startIndex + itemsPerPage;
+          const currentProducts = filteredProducts.slice(startIndex, endIndex);
+          displayProducts(currentProducts);
+        });
+        if (i === currentPage) {
+          pageButton.classList.add('active');
+        }
+        page.appendChild(pageButton);
+      }
+    }
+
+    function applyFilter(filter) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('filter', filter);
+      window.location.href = url.toString();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      addDataToHTML();
+
+      document.querySelectorAll('input[name="filter"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+          const selectedFilter = document.querySelector('input[name="filter"]:checked').value;
+          applyFilter(selectedFilter);
+        });
+      });
     });
-  });
   </script>
+
 </body>
 
 </html>
